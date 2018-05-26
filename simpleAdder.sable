@@ -1,0 +1,22 @@
+/* simpleAdder.sable - A very simple program that recognizes two integers being added. */ 
+Package simpleAdder ; 
+     
+Helpers
+	all = [0 .. 0xffff];
+	letter = [['a' .. 'z'] + ['A' .. 'Z']];
+	
+States
+	normal,
+	comment;
+
+Tokens
+{normal} blank = (' ' | 10 | 13 | 9)*;
+{normal} identifier = (letter | '_')*;
+
+{normal->comment, comment}
+		 comment = '/*';
+		 
+{comment} comment_end = '*/';
+{comment} comment_body = [all - ['*' + '/']]*;
+{comment} star = '*';
+{comment} slash = '/';

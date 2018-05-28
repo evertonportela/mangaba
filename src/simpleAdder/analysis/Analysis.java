@@ -14,9 +14,34 @@ public interface Analysis extends Switch
     void caseStart(Start node);
     void caseAProgram(AProgram node);
 
+    void caseTAtribuicao(TAtribuicao node);
     void caseTInteger(TInteger node);
-    void caseTPlus(TPlus node);
+    void caseTReal(TReal node);
     void caseTSemi(TSemi node);
+    void caseTIdentificador(TIdentificador node);
+    void caseTString(TString node);
+    void caseTAparentese(TAparentese node);
+    void caseTFparentese(TFparentese node);
+    void caseTAcolchete(TAcolchete node);
+    void caseTFcolchete(TFcolchete node);
+    void caseTComentariolinha(TComentariolinha node);
+    void caseTComentario(TComentario node);
+    void caseTCommentEnd(TCommentEnd node);
+    void caseTCommentBody(TCommentBody node);
+    void caseTStar(TStar node);
+    void caseTSlash(TSlash node);
+    void caseTOpsoma(TOpsoma node);
+    void caseTOpsub(TOpsub node);
+    void caseTOpmul(TOpmul node);
+    void caseTOpdiv(TOpdiv node);
+    void caseTMaiorq(TMaiorq node);
+    void caseTMenorq(TMenorq node);
+    void caseTMaigualq(TMaigualq node);
+    void caseTMeigualq(TMeigualq node);
+    void caseTIgual(TIgual node);
+    void caseTEbooleano(TEbooleano node);
+    void caseTOubooleano(TOubooleano node);
+    void caseTNaobooleano(TNaobooleano node);
     void caseEOF(EOF node);
     void caseInvalidToken(InvalidToken node);
 }

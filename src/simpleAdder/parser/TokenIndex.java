@@ -10,26 +10,176 @@ class TokenIndex extends AnalysisAdapter
     int index;
 
     @Override
-    public void caseTInteger(@SuppressWarnings("unused") TInteger node)
+    public void caseTAtribuicao(@SuppressWarnings("unused") TAtribuicao node)
     {
         this.index = 0;
     }
 
     @Override
-    public void caseTPlus(@SuppressWarnings("unused") TPlus node)
+    public void caseTInteger(@SuppressWarnings("unused") TInteger node)
     {
         this.index = 1;
     }
 
     @Override
-    public void caseTSemi(@SuppressWarnings("unused") TSemi node)
+    public void caseTReal(@SuppressWarnings("unused") TReal node)
     {
         this.index = 2;
     }
 
     @Override
-    public void caseEOF(@SuppressWarnings("unused") EOF node)
+    public void caseTSemi(@SuppressWarnings("unused") TSemi node)
     {
         this.index = 3;
+    }
+
+    @Override
+    public void caseTIdentificador(@SuppressWarnings("unused") TIdentificador node)
+    {
+        this.index = 4;
+    }
+
+    @Override
+    public void caseTString(@SuppressWarnings("unused") TString node)
+    {
+        this.index = 5;
+    }
+
+    @Override
+    public void caseTAparentese(@SuppressWarnings("unused") TAparentese node)
+    {
+        this.index = 6;
+    }
+
+    @Override
+    public void caseTFparentese(@SuppressWarnings("unused") TFparentese node)
+    {
+        this.index = 7;
+    }
+
+    @Override
+    public void caseTAcolchete(@SuppressWarnings("unused") TAcolchete node)
+    {
+        this.index = 8;
+    }
+
+    @Override
+    public void caseTFcolchete(@SuppressWarnings("unused") TFcolchete node)
+    {
+        this.index = 9;
+    }
+
+    @Override
+    public void caseTComentariolinha(@SuppressWarnings("unused") TComentariolinha node)
+    {
+        this.index = 10;
+    }
+
+    @Override
+    public void caseTComentario(@SuppressWarnings("unused") TComentario node)
+    {
+        this.index = 11;
+    }
+
+    @Override
+    public void caseTCommentEnd(@SuppressWarnings("unused") TCommentEnd node)
+    {
+        this.index = 12;
+    }
+
+    @Override
+    public void caseTCommentBody(@SuppressWarnings("unused") TCommentBody node)
+    {
+        this.index = 13;
+    }
+
+    @Override
+    public void caseTStar(@SuppressWarnings("unused") TStar node)
+    {
+        this.index = 14;
+    }
+
+    @Override
+    public void caseTSlash(@SuppressWarnings("unused") TSlash node)
+    {
+        this.index = 15;
+    }
+
+    @Override
+    public void caseTOpsoma(@SuppressWarnings("unused") TOpsoma node)
+    {
+        this.index = 16;
+    }
+
+    @Override
+    public void caseTOpsub(@SuppressWarnings("unused") TOpsub node)
+    {
+        this.index = 17;
+    }
+
+    @Override
+    public void caseTOpmul(@SuppressWarnings("unused") TOpmul node)
+    {
+        this.index = 18;
+    }
+
+    @Override
+    public void caseTOpdiv(@SuppressWarnings("unused") TOpdiv node)
+    {
+        this.index = 19;
+    }
+
+    @Override
+    public void caseTMaiorq(@SuppressWarnings("unused") TMaiorq node)
+    {
+        this.index = 20;
+    }
+
+    @Override
+    public void caseTMenorq(@SuppressWarnings("unused") TMenorq node)
+    {
+        this.index = 21;
+    }
+
+    @Override
+    public void caseTMaigualq(@SuppressWarnings("unused") TMaigualq node)
+    {
+        this.index = 22;
+    }
+
+    @Override
+    public void caseTMeigualq(@SuppressWarnings("unused") TMeigualq node)
+    {
+        this.index = 23;
+    }
+
+    @Override
+    public void caseTIgual(@SuppressWarnings("unused") TIgual node)
+    {
+        this.index = 24;
+    }
+
+    @Override
+    public void caseTEbooleano(@SuppressWarnings("unused") TEbooleano node)
+    {
+        this.index = 25;
+    }
+
+    @Override
+    public void caseTOubooleano(@SuppressWarnings("unused") TOubooleano node)
+    {
+        this.index = 26;
+    }
+
+    @Override
+    public void caseTNaobooleano(@SuppressWarnings("unused") TNaobooleano node)
+    {
+        this.index = 27;
+    }
+
+    @Override
+    public void caseEOF(@SuppressWarnings("unused") EOF node)
+    {
+        this.index = 28;
     }
 }

@@ -8,7 +8,7 @@ import simpleAdder.analysis.*;
 public final class AProgram extends PProgram
 {
     private TInteger _left_;
-    private TPlus _plus_;
+    private TOpsoma _opsoma_;
     private TInteger _right_;
     private TSemi _semi_;
 
@@ -19,14 +19,14 @@ public final class AProgram extends PProgram
 
     public AProgram(
         @SuppressWarnings("hiding") TInteger _left_,
-        @SuppressWarnings("hiding") TPlus _plus_,
+        @SuppressWarnings("hiding") TOpsoma _opsoma_,
         @SuppressWarnings("hiding") TInteger _right_,
         @SuppressWarnings("hiding") TSemi _semi_)
     {
         // Constructor
         setLeft(_left_);
 
-        setPlus(_plus_);
+        setOpsoma(_opsoma_);
 
         setRight(_right_);
 
@@ -39,7 +39,7 @@ public final class AProgram extends PProgram
     {
         return new AProgram(
             cloneNode(this._left_),
-            cloneNode(this._plus_),
+            cloneNode(this._opsoma_),
             cloneNode(this._right_),
             cloneNode(this._semi_));
     }
@@ -75,16 +75,16 @@ public final class AProgram extends PProgram
         this._left_ = node;
     }
 
-    public TPlus getPlus()
+    public TOpsoma getOpsoma()
     {
-        return this._plus_;
+        return this._opsoma_;
     }
 
-    public void setPlus(TPlus node)
+    public void setOpsoma(TOpsoma node)
     {
-        if(this._plus_ != null)
+        if(this._opsoma_ != null)
         {
-            this._plus_.parent(null);
+            this._opsoma_.parent(null);
         }
 
         if(node != null)
@@ -97,7 +97,7 @@ public final class AProgram extends PProgram
             node.parent(this);
         }
 
-        this._plus_ = node;
+        this._opsoma_ = node;
     }
 
     public TInteger getRight()
@@ -155,7 +155,7 @@ public final class AProgram extends PProgram
     {
         return ""
             + toString(this._left_)
-            + toString(this._plus_)
+            + toString(this._opsoma_)
             + toString(this._right_)
             + toString(this._semi_);
     }
@@ -170,9 +170,9 @@ public final class AProgram extends PProgram
             return;
         }
 
-        if(this._plus_ == child)
+        if(this._opsoma_ == child)
         {
-            this._plus_ = null;
+            this._opsoma_ = null;
             return;
         }
 
@@ -201,9 +201,9 @@ public final class AProgram extends PProgram
             return;
         }
 
-        if(this._plus_ == oldChild)
+        if(this._opsoma_ == oldChild)
         {
-            setPlus((TPlus) newChild);
+            setOpsoma((TOpsoma) newChild);
             return;
         }
 

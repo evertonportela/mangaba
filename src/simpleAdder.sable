@@ -1,22 +1,60 @@
 /* simpleAdder.sable - A very simple program that recognizes two integers being added. */ 
 Package simpleAdder ; 
      
-Helpers
+Helpers 
+    /* Our helpers */ 
+    numeros = ['0' .. '9'] ; 
+    sp = ' ' ; 
+    nl = 10 ; 
+    underscore = '_' ;
+	letra = [['a' .. 'z'] + ['A' .. 'Z']];
 	all = [0 .. 0xffff];
-	letter = [['a' .. 'z'] + ['A' .. 'Z']];
-	
 States
 	normal,
-	comment;
+	comentario;
+	
+	
+Tokens 
 
-Tokens
-{normal} blank = (' ' | 10 | 13 | 9)*;
-{normal} identifier = (letter | '_')*;
+/* Our simple token definition(s). */
+	{normal}	atribuicao = ':=';
+	{normal}    integer = numeros+ sp*; 
+	{normal}    real = numeros+ ',' numeros+;
+    /*id_numerico = (integer | real)+; */
+	{normal}    semi = ';' nl?; 
+	{normal}	identificador = (letra | underscore) (letra | underscore | numeros)*;
+	{normal}	string = ''' (letra | numeros | underscore)* ''';
+	{normal}	aparentese = '(';
+	{normal}	fparentese = ')';
+	{normal}	acolchete = '[';
+	{normal}	fcolchete = ']';
+	{normal}	comentariolinha = '//' all* nl;
+	
+/* Comentarios bloco */	
+	{normal->comentario, comentario}	comentario = '/*';
+	{comentario} comment_end = '*/';
+	{comentario} comment_body = [all - ['*' + '/']]*;
+	{comentario} star = '*';
+	{comentario} slash = '/';
+	
+/* Operadores aritmeticos */	
+	{normal} opsoma = '+';
+	{normal} opsub = '-';
+	{normal} opmul = '*';
+	{normal} opdiv = '/';
 
-{normal->comment, comment}
-		 comment = '/*';
-		 
-{comment} comment_end = '*/';
-{comment} comment_body = [all - ['*' + '/']]*;
-{comment} star = '*';
-{comment} slash = '/';
+/* Operadores relacionais */
+	{normal} maiorq = '>';
+	{normal} menorq = '<';
+	{normal} maigualq = '>=';
+	{normal} meigualq = '<=';
+	{normal} igual = '=';
+	
+/* Operadores booleanos */
+	{normal} ebooleano = 'e';
+	{normal} oubooleano = 'ou';
+	{normal} naobooleano = 'nao';
+		
+ Productions 
+    /* Our super-simple grammar */ 
+    program = [left]:integer opsoma [right]:integer semi; 

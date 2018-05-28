@@ -54,9 +54,9 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getLeft().apply(this);
         }
-        if(node.getPlus() != null)
+        if(node.getOpsoma() != null)
         {
-            node.getPlus().apply(this);
+            node.getOpsoma().apply(this);
         }
         if(node.getRight() != null)
         {

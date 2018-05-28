@@ -1,11 +1,11 @@
-import simpleAdder.lexer.Lexer;
+import simpleAdder.lexer.Lexer;	
 import simpleAdder.lexer.LexerException;
-import simpleAdder.node.TComment;
+import simpleAdder.node.TComentario;
 import simpleAdder.node.TCommentEnd;
 
 public class ComentarioAninhado extends Lexer{ 
 	private int count;
-	private TComment comment;
+	private TComentario comment;
 	private StringBuffer text;
 	  
 	// Definimos o construtor
@@ -17,12 +17,12 @@ public class ComentarioAninhado extends Lexer{
 	@Override
 	protected void filter() throws LexerException{ 
 		/* Entrando em estado de comentario */
-		if(state.equals(State.COMMENT)) {
+		if(state.equals(State.COMENTARIO)) {
 			// se estamos apenas entrando nesse estado
 			if(comment == null) {
 				// O token é supostamente um comentário.
 				// Nós mantemos uma referência a ela e definimos a contagem para um
-				comment = (TComment) token;
+				comment = (TComentario) token;
 				text = new StringBuffer(comment.getText());
 				count = 1;
 				token = null;
@@ -31,7 +31,7 @@ public class ComentarioAninhado extends Lexer{
 				/* ja estavamos num estado de comentario */
 				text.append(token.getText());
 				
-				if(token instanceof TComment)
+				if(token instanceof TComentario)
 					count++;
 				else if (token instanceof TCommentEnd)
 					count--;

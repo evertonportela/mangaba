@@ -58,9 +58,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getRight().apply(this);
         }
-        if(node.getPlus() != null)
+        if(node.getOpsoma() != null)
         {
-            node.getPlus().apply(this);
+            node.getOpsoma().apply(this);
         }
         if(node.getLeft() != null)
         {

@@ -7,14 +7,14 @@ import simpleAdder.analysis.*;
 @SuppressWarnings("nls")
 public final class TOpdiv extends Token
 {
-    public TOpdiv()
+    public TOpdiv(String text)
     {
-        super.setText("/");
+        setText(text);
     }
 
-    public TOpdiv(int line, int pos)
+    public TOpdiv(String text, int line, int pos)
     {
-        super.setText("/");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TOpdiv extends Token
     @Override
     public Object clone()
     {
-      return new TOpdiv(getLine(), getPos());
+      return new TOpdiv(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTOpdiv(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TOpdiv text.");
     }
 }

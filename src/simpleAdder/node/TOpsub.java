@@ -7,14 +7,14 @@ import simpleAdder.analysis.*;
 @SuppressWarnings("nls")
 public final class TOpsub extends Token
 {
-    public TOpsub()
+    public TOpsub(String text)
     {
-        super.setText("-");
+        setText(text);
     }
 
-    public TOpsub(int line, int pos)
+    public TOpsub(String text, int line, int pos)
     {
-        super.setText("-");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TOpsub extends Token
     @Override
     public Object clone()
     {
-      return new TOpsub(getLine(), getPos());
+      return new TOpsub(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTOpsub(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TOpsub text.");
     }
 }

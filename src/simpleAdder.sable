@@ -9,39 +9,72 @@ Helpers
     underscore = '_' ;
 	letra = [['a' .. 'z'] + ['A' .. 'Z']];
 	all = [0 .. 0xffff];
+	verdadeiro = 'verdadeiro';
+	falso = 'falso';
+	
 States
 	normal,
 	comentario;
 	
 	
+	
 Tokens 
 
 /* Our simple token definition(s). */
-	{normal}	atribuicao = ':=';
-	{normal}    integer = numeros+ sp*; 
-	{normal}    real = numeros+ ',' numeros+;
-    /*id_numerico = (integer | real)+; */
-	{normal}    semi = ';' nl?; 
+	
+	/* Demais reservadas */
+	{normal} programa = 'programa';
+	{normal} inteiro = 'inteiro'; 
+	{normal} real = 'real';
+	{normal} caractere = 'caractere';
+	{normal} booleano = 'booleano';
+	{normal} inicio = 'inicio';
+	{normal} fim = 'fim';
+	{normal} se = 'se';
+	{normal} senao = 'senao';
+	{normal} enquanto = 'enquanto';
+	{normal} para = 'para';
+	{normal} avalie = 'avalie';
+	{normal} caso = 'caso';
+
+
+
+	/* tipos */
+	{normal}    tinteiro = numeros+ sp*; 
+	{normal}    treal = numeros+ ',' numeros+;
+	{normal}	tcaractere = ''' (letra | numeros | underscore | sp) ''';
+	{normal} 	tbooleano = (verdadeiro | falso);
+	
+	
+	
+	
+	{normal}	atribuicao = '<-';
+	/*id_numerico = (integer | real); */
+	{normal}    pontovirgula = ';' nl?; 
 	{normal}	identificador = (letra | underscore) (letra | underscore | numeros)*;
 	{normal}	string = ''' (letra | numeros | underscore)* ''';
 	{normal}	aparentese = '(';
 	{normal}	fparentese = ')';
 	{normal}	acolchete = '[';
 	{normal}	fcolchete = ']';
-	{normal}	comentariolinha = '//' all* nl;
+	{normal}	doispontos = ':';
+	{normal}	virgula = ',';
+	
+	{normal}	comentariolinha = '/' '/' all* nl;
+	
 	
 /* Comentarios bloco */	
-	{normal->comentario, comentario}	comentario = '/*';
-	{comentario} comment_end = '*/';
+	{normal->comentario, comentario}	comentario = '/' '*';
+	{comentario} comment_end = '*' '/';
 	{comentario} comment_body = [all - ['*' + '/']]*;
-	{comentario} star = '*';
-	{comentario} slash = '/';
+	
+
 	
 /* Operadores aritmeticos */	
-	{normal} opsoma = '+';
-	{normal} opsub = '-';
-	{normal} opmul = '*';
-	{normal} opdiv = '/';
+	{normal} opsoma = '+' sp*;
+	{normal} opsub = '-' sp*;
+	{normal} opmul = '*'sp*;
+	{normal} opdiv = '/'sp*;
 
 /* Operadores relacionais */
 	{normal} maiorq = '>';
@@ -54,7 +87,14 @@ Tokens
 	{normal} ebooleano = 'e';
 	{normal} oubooleano = 'ou';
 	{normal} naobooleano = 'nao';
+	
+
+	
+	blank = (' ' | 13 | 10 | 09)+;
+	
+Ignored Tokens
+	blank;
 		
  Productions 
     /* Our super-simple grammar */ 
-    program = [left]:integer opsoma [right]:integer semi; 
+    program = [left]:inteiro opsoma [right]:inteiro pontovirgula; 

@@ -221,16 +221,16 @@ public class Parser
         PProgram pprogramNode1;
         {
             // Block
-        TInteger tintegerNode2;
+        TInteiro tinteiroNode2;
         TOpsoma topsomaNode3;
-        TInteger tintegerNode4;
-        TSemi tsemiNode5;
-        tintegerNode2 = (TInteger)nodeArrayList1.get(0);
+        TInteiro tinteiroNode4;
+        TPontovirgula tpontovirgulaNode5;
+        tinteiroNode2 = (TInteiro)nodeArrayList1.get(0);
         topsomaNode3 = (TOpsoma)nodeArrayList2.get(0);
-        tintegerNode4 = (TInteger)nodeArrayList3.get(0);
-        tsemiNode5 = (TSemi)nodeArrayList4.get(0);
+        tinteiroNode4 = (TInteiro)nodeArrayList3.get(0);
+        tpontovirgulaNode5 = (TPontovirgula)nodeArrayList4.get(0);
 
-        pprogramNode1 = new AProgram(tintegerNode2, topsomaNode3, tintegerNode4, tsemiNode5);
+        pprogramNode1 = new AProgram(tinteiroNode2, topsomaNode3, tinteiroNode4, tpontovirgulaNode5);
         }
 	nodeList.add(pprogramNode1);
         return nodeList;
@@ -241,10 +241,10 @@ public class Parser
     private static int[][][] actionTable;
 /*      {
 			{{-1, ERROR, 0}, {1, SHIFT, 1}, },
-			{{-1, ERROR, 1}, {16, SHIFT, 3}, },
-			{{-1, ERROR, 2}, {28, ACCEPT, -1}, },
+			{{-1, ERROR, 1}, {31, SHIFT, 3}, },
+			{{-1, ERROR, 2}, {43, ACCEPT, -1}, },
 			{{-1, ERROR, 3}, {1, SHIFT, 4}, },
-			{{-1, ERROR, 4}, {3, SHIFT, 5}, },
+			{{-1, ERROR, 4}, {18, SHIFT, 5}, },
 			{{-1, REDUCE, 0}, },
         };*/
     private static int[][][] gotoTable;
@@ -253,10 +253,10 @@ public class Parser
         };*/
     private static String[] errorMessages;
 /*      {
-			"expecting: integer",
-			"expecting: '+'",
+			"expecting: 'inteiro'",
+			"expecting: opsoma",
 			"expecting: EOF",
-			"expecting: semi",
+			"expecting: pontovirgula",
         };*/
     private static int[] errors;
 /*      {

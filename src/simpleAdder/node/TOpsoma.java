@@ -7,14 +7,14 @@ import simpleAdder.analysis.*;
 @SuppressWarnings("nls")
 public final class TOpsoma extends Token
 {
-    public TOpsoma()
+    public TOpsoma(String text)
     {
-        super.setText("+");
+        setText(text);
     }
 
-    public TOpsoma(int line, int pos)
+    public TOpsoma(String text, int line, int pos)
     {
-        super.setText("+");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TOpsoma extends Token
     @Override
     public Object clone()
     {
-      return new TOpsoma(getLine(), getPos());
+      return new TOpsoma(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTOpsoma(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TOpsoma text.");
     }
 }

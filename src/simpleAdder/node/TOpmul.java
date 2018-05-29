@@ -7,14 +7,14 @@ import simpleAdder.analysis.*;
 @SuppressWarnings("nls")
 public final class TOpmul extends Token
 {
-    public TOpmul()
+    public TOpmul(String text)
     {
-        super.setText("*");
+        setText(text);
     }
 
-    public TOpmul(int line, int pos)
+    public TOpmul(String text, int line, int pos)
     {
-        super.setText("*");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,12 @@ public final class TOpmul extends Token
     @Override
     public Object clone()
     {
-      return new TOpmul(getLine(), getPos());
+      return new TOpmul(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTOpmul(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TOpmul text.");
     }
 }

@@ -7,10 +7,10 @@ import simpleAdder.analysis.*;
 @SuppressWarnings("nls")
 public final class AProgram extends PProgram
 {
-    private TInteger _left_;
+    private TInteiro _left_;
     private TOpsoma _opsoma_;
-    private TInteger _right_;
-    private TSemi _semi_;
+    private TInteiro _right_;
+    private TPontovirgula _pontovirgula_;
 
     public AProgram()
     {
@@ -18,10 +18,10 @@ public final class AProgram extends PProgram
     }
 
     public AProgram(
-        @SuppressWarnings("hiding") TInteger _left_,
+        @SuppressWarnings("hiding") TInteiro _left_,
         @SuppressWarnings("hiding") TOpsoma _opsoma_,
-        @SuppressWarnings("hiding") TInteger _right_,
-        @SuppressWarnings("hiding") TSemi _semi_)
+        @SuppressWarnings("hiding") TInteiro _right_,
+        @SuppressWarnings("hiding") TPontovirgula _pontovirgula_)
     {
         // Constructor
         setLeft(_left_);
@@ -30,7 +30,7 @@ public final class AProgram extends PProgram
 
         setRight(_right_);
 
-        setSemi(_semi_);
+        setPontovirgula(_pontovirgula_);
 
     }
 
@@ -41,7 +41,7 @@ public final class AProgram extends PProgram
             cloneNode(this._left_),
             cloneNode(this._opsoma_),
             cloneNode(this._right_),
-            cloneNode(this._semi_));
+            cloneNode(this._pontovirgula_));
     }
 
     @Override
@@ -50,12 +50,12 @@ public final class AProgram extends PProgram
         ((Analysis) sw).caseAProgram(this);
     }
 
-    public TInteger getLeft()
+    public TInteiro getLeft()
     {
         return this._left_;
     }
 
-    public void setLeft(TInteger node)
+    public void setLeft(TInteiro node)
     {
         if(this._left_ != null)
         {
@@ -100,12 +100,12 @@ public final class AProgram extends PProgram
         this._opsoma_ = node;
     }
 
-    public TInteger getRight()
+    public TInteiro getRight()
     {
         return this._right_;
     }
 
-    public void setRight(TInteger node)
+    public void setRight(TInteiro node)
     {
         if(this._right_ != null)
         {
@@ -125,16 +125,16 @@ public final class AProgram extends PProgram
         this._right_ = node;
     }
 
-    public TSemi getSemi()
+    public TPontovirgula getPontovirgula()
     {
-        return this._semi_;
+        return this._pontovirgula_;
     }
 
-    public void setSemi(TSemi node)
+    public void setPontovirgula(TPontovirgula node)
     {
-        if(this._semi_ != null)
+        if(this._pontovirgula_ != null)
         {
-            this._semi_.parent(null);
+            this._pontovirgula_.parent(null);
         }
 
         if(node != null)
@@ -147,7 +147,7 @@ public final class AProgram extends PProgram
             node.parent(this);
         }
 
-        this._semi_ = node;
+        this._pontovirgula_ = node;
     }
 
     @Override
@@ -157,7 +157,7 @@ public final class AProgram extends PProgram
             + toString(this._left_)
             + toString(this._opsoma_)
             + toString(this._right_)
-            + toString(this._semi_);
+            + toString(this._pontovirgula_);
     }
 
     @Override
@@ -182,9 +182,9 @@ public final class AProgram extends PProgram
             return;
         }
 
-        if(this._semi_ == child)
+        if(this._pontovirgula_ == child)
         {
-            this._semi_ = null;
+            this._pontovirgula_ = null;
             return;
         }
 
@@ -197,7 +197,7 @@ public final class AProgram extends PProgram
         // Replace child
         if(this._left_ == oldChild)
         {
-            setLeft((TInteger) newChild);
+            setLeft((TInteiro) newChild);
             return;
         }
 
@@ -209,13 +209,13 @@ public final class AProgram extends PProgram
 
         if(this._right_ == oldChild)
         {
-            setRight((TInteger) newChild);
+            setRight((TInteiro) newChild);
             return;
         }
 
-        if(this._semi_ == oldChild)
+        if(this._pontovirgula_ == oldChild)
         {
-            setSemi((TSemi) newChild);
+            setPontovirgula((TPontovirgula) newChild);
             return;
         }
 

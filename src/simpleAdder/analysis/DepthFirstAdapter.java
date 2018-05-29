@@ -62,9 +62,9 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getRight().apply(this);
         }
-        if(node.getSemi() != null)
+        if(node.getPontovirgula() != null)
         {
-            node.getSemi().apply(this);
+            node.getPontovirgula().apply(this);
         }
         outAProgram(node);
     }
